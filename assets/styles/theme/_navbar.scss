@@ -1,8 +1,7 @@
-﻿// Navbar
-// Navbar themes
+﻿.navbar-container {
+	background-color: map-get($purples, "600");
+}
 
-
-// White links against a dark background
 .navbar-dark {
 	.navbar-nav {
 		.nav-link {

@@ -1,82 +1,58 @@
 <?php 
-	// Get server's protocol
-	if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
-		$uri = 'https://';
-	} 
-
-	else { $uri = 'http://'; }
-
-
-	// Setting some page values
-	$site_directory = 'webapps/members';
-
-	switch($_SERVER['SCRIPT_NAME']){
-		case '/' . $site_directory . '/index.php':
+	// get canonical url
+	$canonical_url_building = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	
+	// Identify URL and set values
+	switch($_SERVER['PHP_SELF']){
+		case '/webapps/members/index.php':
 			$title = 'Natalia Hot Teen';
 			$keywords = '';
-			$bodyclass = 'view-index';
+			$body_class = 'view-index';
 			$identifier = 'index';
 			$description = '';
-			$canonicalurl = $uri . $_SERVER['SERVER_NAME'];
+			$canonical_url = $canonical_url_building;
+			break;
+
+		case '/webapps/members/models-wanted.php':
+			$title = 'Models Wanted';
+			$keywords = '';
+			$body_class = 'view-models-wanted';
+			$identifier = 'modelswanted';
+			$description = '';
+			$canonical_url = $canonical_url_building;
 			break;
 
 		default:
 			$title = '';
 			$keywords = '';
-			$bodyclass = 'view-index';
-			$identifier = '';
+			$body_class = 'view-index';
+			$identifier = 'index';
 			$description = '';
-			$canonicalurl = $uri . $_SERVER['SERVER_NAME'];
+			$canonical_url = $canonical_url_building;
 	}
 
 
 	// Urls
-	// Main
-	$joinurl = 'join.php';
-	$indexurl = 'index.php';
-	$membersurl = 'members.php';
+	$url_index = 'index.php';
+	$url_members = 'members.php';
+	$url_modelswanted = 'models-wanted.php';
 
-	// Others
-
-
-	// Arrays
-	$navbarAttrs = array(
-		array(
-			'url'   => $indexurl,
-			'icon'  => 'home',
-			'name'  => 'Home',
-		),
-	);
+	//Categories
+	$cat_Natalia = 'natalia-hot-teen.php';
+	$cat_InvitedModels = 'invited-models.php';
+	$cat_InstaGirlfriends = 'instagirlfriends.php';
+	$cat_AnimeSexxxy = 'anime-sexxxy.php';
+	$cat_DirtyGifs = 'dirty-gifs.php';
+	$cat_HotWallpapers = 'wallpapers.php';
 
 
-	$footer_MapAttrs = array(
-		array(
-			'url'   => $indexurl,
-			'name'  => 'Home',
-			'title' => '',
-		),
-	);
 
-	$footer_AgreementAttrs = array(
-		array(
-			'url'   => 'support.php',
-			'name'  => 'Customer Care',
-			'title' => '',
-		),
-		array(
-			'url'   => 'terms.php',
-			'name'  => 'Terms of Service',
-			'title' => '',
-		),
-		array(
-			'url'   => 'parental.php',
-			'name'  => 'Parental Blocking',
-			'title' => '',
-		),
-		array(
-			'url'   => '2257.php',
-			'name'  => '18 U.S.C. 2257',
-			'title' => '',
-		),
-	);
+	// navbar config
+	require_once 'navbar_config.php';
+
+	// index config
+	require_once 'index_config.php';
+
+	// footer config
+	require_once 'footer_config.php';
 ?>

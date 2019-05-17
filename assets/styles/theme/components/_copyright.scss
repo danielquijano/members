@@ -1,5 +1,3 @@
-﻿// Copyright
-
-.copyright { 
-	background-color: darken($primary, 5.0%);
+﻿.copyright-container { 
+	background-color: map-get($purples, "600");
 }

@@ -1,8 +1,4 @@
-﻿// Mixins
-
-// Column counts
-
-@mixin column-count($columns){
+﻿@mixin column-count($columns){
 	-webkit-column-count: $columns;
 	-moz-column-count: $columns;
 	column-count: $columns;
